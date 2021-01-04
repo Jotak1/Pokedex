@@ -1,0 +1,26 @@
+<mat-card class="card" [ngStyle]="{ background: backgroundColor1 }"
+[ngStyle]="{ 'background-image': backgroundColor2 }">
+
+  <mat-card-header>
+    <img mat-card-avatar class="header-image" src="{{pokemonImg}}">
+    <mat-card-title>{{pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>Nº {{pokemon.id}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <img mat-card-image src="{{pokemonImg}}" alt="pokemon">
+
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip>{{pokemonType}}</mat-chip>
+
+      <mat-chip *ngIf="pokemonTypes">{{pokemonTypes}}</mat-chip>
+
+    </mat-chip-list>
+    <mat-chip-list>
+
+      <mat-chip color="primary">Height: {{pokemon.height}}</mat-chip>
+      <mat-chip color="primary">Weight: {{pokemon.weight}}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+
+</mat-card>
