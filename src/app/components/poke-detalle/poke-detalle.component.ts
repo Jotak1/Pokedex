@@ -20,8 +20,9 @@ export class PokeDetalleComponent implements OnInit {
 
   pokemon: any = '';
   pokemonImg = '';
-  pokemonType = [];
-  pokemonTypes = [];
+  pokemonType: string = '';
+  pokemonTypes: string = '';
+
 
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService,
@@ -50,7 +51,6 @@ export class PokeDetalleComponent implements OnInit {
         this.pokemonImg = this.pokemon.sprites.front_default;
         this.pokemonType = res.types[0].type.name;
         this.pokemonTypes = res.types[1].type.name;
-
 
       },
       err => {

@@ -11,9 +11,9 @@
 
   <mat-card-content>
     <mat-chip-list>
-      <mat-chip>{{pokemonType}}</mat-chip>
+      <mat-chip [style.background]="getTypeColor(pokemonType)"> {{pokemonType}}</mat-chip>
 
-      <mat-chip *ngIf="pokemonTypes">{{pokemonTypes}}</mat-chip>
+      <mat-chip [style.background]="getTypeColor(pokemonTypes)" *ngIf="pokemonTypes.length != 0">{{pokemonTypes}}</mat-chip>
 
     </mat-chip-list>
     <mat-chip-list>
