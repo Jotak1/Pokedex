@@ -24,6 +24,7 @@ export class PokeDetalleComponent implements OnInit {
   pokemonTypes: string = '';
 
 
+
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef) {
@@ -49,8 +50,11 @@ export class PokeDetalleComponent implements OnInit {
         console.log(res);
         this.pokemon = res;
         this.pokemonImg = this.pokemon.sprites.front_default;
+
         this.pokemonType = res.types[0].type.name;
+        if(res.types[1]){
         this.pokemonTypes = res.types[1].type.name;
+        }
 
       },
       err => {
