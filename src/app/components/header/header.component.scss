@@ -1,0 +1,15 @@
+@import "../../../assets/styles/variables.scss";
+
+img:hover{
+  cursor: pointer;
+}
+.header {
+  background-color: $blue;
+  box-shadow:         4px 5px 8px 0px rgba(50, 50, 50, 0.87);
+  color: $white
+}
+
+h1{
+  margin-left: unset;
+
+}

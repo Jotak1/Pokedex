@@ -5,6 +5,7 @@
     margin: auto;
     margin-top: 20px;
     background-color: $red;
+    box-shadow:         4px 5px 8px 0px rgba(50, 50, 50, 0.87);
 }
 
 .header-image {
@@ -15,6 +16,7 @@
     background-color: $white;
     padding-top: 10px;
     border-radius: 10px;
+    box-shadow:         4px 5px 8px 0px rgba(50, 50, 50, 0.87);
 }
 
 .mat-card-title{
@@ -25,4 +27,8 @@
 .mat-card-subtitle{
     color: $black;
     font-weight: bold;
+}
+
+.mat-chip{
+  box-shadow:         4px 5px 8px 0px rgba(50, 50, 50, 0.87);
 }
