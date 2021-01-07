@@ -31,6 +31,7 @@ table {
     text-align: center;
     font-size: 15px;
     margin: auto;
+    background-color: $indigo100;
 }
 
 
@@ -44,11 +45,11 @@ table {
 }
 
 .mat-row:nth-child(even) {
-  background: linear-gradient(100deg, #006ace 20%, #00e7b5 0%);
+  background: linear-gradient(100deg, $indigo700 20%, $BG700 0%);
 }
 
 .mat-row:nth-child(odd) {
-  background: linear-gradient(80deg, #006ace 20%, #00e7b5 0%);
+  background: linear-gradient(80deg, $indigo500 20%, $BG500 0%);
 
 }
 
@@ -61,10 +62,11 @@ table {
 ::ng-deep.mat-paginator {
     width: 80%;
     margin: auto;
+    background-color: $indigo100;
 }
 
 .mat-form-field {
-    font-size: 13px;
+    font-size: 15px;
     width: 20%;
 
     margin-bottom: 5px;
@@ -79,5 +81,5 @@ table {
 }
 
 input {
-    color: black !important;
+    color: $indigo100 !important;
 }
