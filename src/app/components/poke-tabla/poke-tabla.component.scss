@@ -6,6 +6,10 @@
     text-align: center;
 }
 
+th.mat-sort-header-sorted {
+  color: black;
+}
+
 table {
 
     min-width: 80%;
@@ -22,8 +26,8 @@ table {
 
     }
     & img:hover{
-      width: 93px;
-      height: 93px;
+      width: 73px;
+      height: 73px;
     }
 }
 
