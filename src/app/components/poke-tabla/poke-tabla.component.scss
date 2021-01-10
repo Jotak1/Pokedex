@@ -17,6 +17,8 @@ table {
     text-align: center;
 
     & img{
+      width: 73px;
+      height: 73px;
       margin-top: 1px;
       border-radius: 40px 40px 40px 40px;
       background: linear-gradient(135deg, #0160b900 30%, rgba(50, 50, 50, 0.87) 80%);
@@ -26,8 +28,8 @@ table {
 
     }
     & img:hover{
-      width: 73px;
-      height: 73px;
+      width: 93px;
+      height: 93px;
     }
 }
 
@@ -51,11 +53,11 @@ table {
 }
 
 .mat-row:nth-child(even) {
-  background: linear-gradient(100deg, $indigo700 20%, $BG700 0%);
+  background: linear-gradient(100deg, $indigo700 30%, $BG700 0%);
 }
 
 .mat-row:nth-child(odd) {
-  background: linear-gradient(80deg, $indigo500 20%, $BG500 0%);
+  background: linear-gradient(80deg, $indigo500 30%, $BG500 0%);
 
 }
 

@@ -25,7 +25,7 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row m={10px} *matRowDef="let row; columns: displayedColumns;" (click)="getRow(row)"></tr>
+      <tr mat-row m={10px} *matRowDef="let row; columns: displayedColumns;" data-bs-toggle="modal" data-bs-target="#ejemploModal" (click)='getRow(row)'></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row"  *matNoDataRow>
@@ -35,4 +35,28 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ejemploModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="ejemploModal" tabindex="-1" aria-labelledby="ejemploModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="ejemploModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <app-poke-detalle></app-poke-detalle>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
 </div>

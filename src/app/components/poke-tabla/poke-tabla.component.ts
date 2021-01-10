@@ -1,9 +1,11 @@
-import { AfterViewInit , Component, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit , Component, ViewChild, OnInit, Inject} from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 
 @Component({
@@ -11,14 +13,14 @@ import {MatSort} from '@angular/material/sort';
   templateUrl: './poke-tabla.component.html',
   styleUrls: ['./poke-tabla.component.scss']
 })
-export class PokeTablaComponent implements AfterViewInit {
+export class PokeTablaComponent implements OnInit {
   //Columnas que se muestran de la tabla de angular material
   displayedColumns: string[] = ['position', 'image', 'name'];
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
   public limit: number = 0;
   public pokelimit: any[] = [];
-  public ultimo: any;
+  public ultimo: number;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -27,12 +29,14 @@ export class PokeTablaComponent implements AfterViewInit {
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
+
+
   ngOnInit() {
     this.getPokelimit();
   }
   ngAfterViewInit() {
 
-    this.getPokemons();
+      // this.getPokemons();
   }
   getPokelimit(){
     this.pokemonService.getPokelimit(this.limit).subscribe(
@@ -41,41 +45,61 @@ export class PokeTablaComponent implements AfterViewInit {
         this.pokelimit.push(res.count);
         console.log(this.pokelimit);
         this.ultimo = this.pokelimit[0];
-        console.log(this.ultimo);
+        let pokemonData;
+        for (let i = 1; i <= this.ultimo; i++) {
+          this.pokemonService.getPokemons(i).subscribe(
+            res => {
+              pokemonData = {
+                position: i,
+                image: res.sprites.front_default,
+                name: res.name
+              };
+              //ponemos la data que viene del servicio en un arreglo
+              this.data.push(pokemonData);
+
+              this.dataSource = new MatTableDataSource<any>(this.data);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+            },
+            err => {
+              console.log(err);
+            }
+          );
+        }
 
       },
       err => {
         console.log(err);
       }
-    )
+    );
 
   }
 
-  getPokemons() {
+  // getPokemons() {
 
-    let pokemonData;
+  //   let pokemonData;
 
-    for (let i = 1; i <= this.ultimo; i++) {
-      this.pokemonService.getPokemons(i).subscribe(
-        res => {
-          pokemonData = {
-            position: i,
-            image: res.sprites.front_default,
-            name: res.name
-          };
-          //ponemos la data que viene del servicio en un arreglo
-          this.data.push(pokemonData);
+  //   for (let i = 1; i <= this.ultimo; i++) {
+  //     this.pokemonService.getPokemons(i).subscribe(
+  //       res => {
+  //         pokemonData = {
+  //           position: i,
+  //           image: res.sprites.front_default,
+  //           name: res.name
+  //         };
+  //         //ponemos la data que viene del servicio en un arreglo
+  //         this.data.push(pokemonData);
 
-          this.dataSource = new MatTableDataSource<any>(this.data);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        },
-        err => {
-          console.log(err);
-        }
-      );
-    }
-  }
+  //         this.dataSource = new MatTableDataSource<any>(this.data);
+  //         this.dataSource.paginator = this.paginator;
+  //         this.dataSource.sort = this.sort;
+  //       },
+  //       err => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   }
+  // }
 
   //Filtro para el paginador
   applyFilter(event: Event) {
@@ -89,9 +113,8 @@ export class PokeTablaComponent implements AfterViewInit {
 
  //Obtiene elemento seleccionado
   getRow(row){
-    //console.log(row);
-    this.router.navigateByUrl(`/pokedex/${row.position}`)
+    console.log(row);
+    console.log(row.position);
   }
-
 
 }

@@ -1,7 +1,9 @@
+import { PokeTablaComponent } from './../poke-tabla/poke-tabla.component';
 import { ColorType } from 'src/shared/ColorInterface';
 import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -29,11 +31,12 @@ export class PokeDetalleComponent implements OnInit {
     private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef) {
     //obtiene parametro de la url
-    this.activatedRouter.params.subscribe(
-      params => {
-        this.getPokemon(params['id']);
-      }
-    )
+    // this.activatedRouter.params.subscribe(
+    //   params => {
+    //     this.getPokemon(params['id']);
+    //   }
+    // )
+
   }
 
   ngOnInit(): void {
