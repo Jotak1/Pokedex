@@ -1,9 +1,10 @@
-import { AfterViewInit , Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit , Component, ViewChild, OnInit } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-poke-tabla',
@@ -15,6 +16,9 @@ export class PokeTablaComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'image', 'name'];
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
+  public limit: number = 0;
+  public pokelimit: any[] = [];
+  public ultimo: any;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -23,18 +27,35 @@ export class PokeTablaComponent implements AfterViewInit {
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.getPokelimit();
   }
   ngAfterViewInit() {
-    this.getPokemons();
 
+    this.getPokemons();
+  }
+  getPokelimit(){
+    this.pokemonService.getPokelimit(this.limit).subscribe(
+      res =>{
+        console.log(res);
+        this.pokelimit.push(res.count);
+        console.log(this.pokelimit);
+        this.ultimo = this.pokelimit[0];
+        console.log(this.ultimo);
+
+      },
+      err => {
+        console.log(err);
+      }
+    )
 
   }
+
   getPokemons() {
+
     let pokemonData;
 
-    for (let i = 1; i <= 150; i++) {
+    for (let i = 1; i <= this.ultimo; i++) {
       this.pokemonService.getPokemons(i).subscribe(
         res => {
           pokemonData = {
