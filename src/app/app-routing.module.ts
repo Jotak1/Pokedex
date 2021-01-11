@@ -1,4 +1,3 @@
-import { DialogComponent } from './components/dialog/dialog.component';
 import { PokeTablaComponent } from './components/poke-tabla/poke-tabla.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

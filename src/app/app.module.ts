@@ -10,7 +10,7 @@ import { PokeTablaComponent } from './components/poke-tabla/poke-tabla.component
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/shared/material.module';
-import { DialogComponent } from './components/dialog/dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -18,8 +18,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HeaderComponent,
     FooterComponent,
     PokeDetalleComponent,
-    PokeTablaComponent,
-    DialogComponent
+    PokeTablaComponent
   ],
   imports: [
     BrowserModule,

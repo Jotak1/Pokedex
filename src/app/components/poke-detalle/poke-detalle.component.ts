@@ -1,17 +1,18 @@
 import { PokeTablaComponent } from './../poke-tabla/poke-tabla.component';
 import { ColorType } from 'src/shared/ColorInterface';
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, Input, SimpleChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-poke-detalle',
   templateUrl: './poke-detalle.component.html',
-  styleUrls: ['./poke-detalle.component.scss']
+  styleUrls: ['./poke-detalle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PokeDetalleComponent implements OnInit {
+  // @Input('selecid') id :string;
+
 
   private color1: string = 'ffffff'
   private color2: string = '707070'
@@ -26,7 +27,6 @@ export class PokeDetalleComponent implements OnInit {
   pokemonTypes: string = '';
 
 
-
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService,
     private cdr: ChangeDetectorRef) {
@@ -36,15 +36,21 @@ export class PokeDetalleComponent implements OnInit {
     //     this.getPokemon(params['id']);
     //   }
     // )
+      // this.getPokemon('selecid');
 
   }
 
+
   ngOnInit(): void {
+    this.cdr.detectChanges();
   }
 
   ngAfterViewChecked() {
+
     this.cdr.detectChanges();
+
   }
+
 
 
   getPokemon(id) {
@@ -58,12 +64,20 @@ export class PokeDetalleComponent implements OnInit {
         if(res.types[1]){
         this.pokemonTypes = res.types[1].type.name;
         }
+        else{
+          this.pokemonTypes = '';
+        }
+        this.contador = 0;
+        // this.getTypeColor(this.pokemonType);
+        // this.getTypeColor(this.pokemonTypes);
 
       },
       err => {
         console.log(err);
       }
+
     )
+
   }
 
   getTypeColor(type: string): any {
