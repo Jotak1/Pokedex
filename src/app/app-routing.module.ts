@@ -6,8 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path: 'home', component: PokeTablaComponent},
   {path: 'about', component: AboutComponent},
-  {path: '', pathMatch: 'full', redirectTo: 'about' },
-  {path: '**', pathMatch: 'full', redirectTo: 'about'},
+  {path: '', pathMatch: 'full', redirectTo: 'home' },
+  {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 
 @NgModule({
