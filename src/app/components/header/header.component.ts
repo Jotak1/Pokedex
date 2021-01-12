@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  navbol:boolean;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,6 +17,15 @@ export class HeaderComponent implements OnInit {
 
   inicio(){
     this.router.navigateByUrl('/home');
+  }
 
+  sideNav() {
+    this.navbol = !this.navbol;
+    if(this.navbol){
+    (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '235px';
+    }
+    else{
+    (<HTMLInputElement>document.getElementById('mySidenav')).style.width = '0';
+    }
   }
 }

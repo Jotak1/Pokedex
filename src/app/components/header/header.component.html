@@ -1,7 +1,22 @@
 <mat-toolbar class="header">
   <mat-toolbar-row>
-    <!-- Imagen que quieres en el header-->
-     <img src="/assets/images/pokedex-logo.png" alt="pokedex" width="40" height="40" (click)="inicio()">
+     <img src="./assets/images/pokedex-logo.png" alt="pokedex" width="40" height="40" (click)="inicio()">
      <h1>Pokedex</h1>
+     <span class="spacer"></span>
+     <button mat-icon-button class="buttonsidenav" (click)='sideNav()' >
+      <mat-icon>menu</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
+
+<nav id="mySidenav" class="sidenav" color='primary'>
+  <a class="sidenav-closebtn" (click)="sideNav()"> &times; </a>
+  <ul>
+    <li routerLinkActive="active" (click)="sideNav()">
+      <a class="sidenav-a" [routerLink]="['/home']">INICIO</a>
+    </li>
+    <li routerLinkActive="active" (click)="sideNav()">
+      <a class="sidenav-a" [routerLink]="['/about']">ACERCA</a>
+    </li>
+  </ul>
+</nav>

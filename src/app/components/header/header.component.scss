@@ -10,6 +10,68 @@ img:hover{
 }
 
 h1{
-  margin-left: unset;
+  margin-left: 10px;
 
 }
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color: $indigo500;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.2s;
+  &-closebtn {
+    color: $indigo100;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 40px;
+    cursor: pointer;
+  }
+  &-closebtn:hover {
+    color: $BG900;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin: 35px 0px 35px 0px;
+    }
+  }
+}
+
+.sidenav-a {
+  padding: 0 0 0 25px;
+  font-size: 20px;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  font-weight: 600;
+}
+
+.active .sidenav-a {
+  color: $BG900;
+  font-weight: 600;
+}
+
+.sidenav-a:hover {
+  color: $BG900 !important;
+  font-weight: 600;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+button{
+  outline:none;
+}
+
